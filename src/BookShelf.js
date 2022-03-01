@@ -12,7 +12,7 @@ class BookShelf extends Component {
             <div className="bookshelf-books">
                 <ol className="books-grid">
                     <li>
-                        <Book />
+                        <Book title="To Kill a Mockingbird" authors="Harper Lee" />
                     </li>
                     <li>
                         <div className="book">
