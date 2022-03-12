@@ -5,9 +5,7 @@ import PropTypes from 'prop-types';
 class ListBookContent extends Component {
 
     render() {
-        console.log("here")
         const {books} = this.props
-        console.log(`books size: ${books.length}`)
         const booksCurrentlyReading = [], booksWantedToRead = [], booksRead = []
 
         books.forEach(book => {
@@ -25,9 +23,9 @@ class ListBookContent extends Component {
         })
         return <div className="list-books-content">
             <div>
-                <BookShelf title="Currently Reading" books={booksCurrentlyReading} />
-                <BookShelf title="Want to Read" books={booksWantedToRead} />
-                <BookShelf title="Read" books={booksRead} />
+                <BookShelf title="Currently Reading" books={booksCurrentlyReading} changeBookCategory={this.props.changeBookCategory} />
+                <BookShelf title="Want to Read" books={booksWantedToRead} changeBookCategory={this.props.changeBookCategory}/>
+                <BookShelf title="Read" books={booksRead} changeBookCategory={this.props.changeBookCategory} />
             </div>
         </div>
     }
@@ -35,7 +33,8 @@ class ListBookContent extends Component {
 }
 
 ListBookContent.propTypes = {
-    books: PropTypes.array.isRequired
+    books: PropTypes.array.isRequired,
+    changeBookCategory: PropTypes.func.isRequired
 }
 
 export default ListBookContent;
