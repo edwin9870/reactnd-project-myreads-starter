@@ -3,12 +3,12 @@ import BookChanger from "./BookChanger";
 import PropTypes from 'prop-types';
 
 const Book = (props) => {
-    const {title, authors, img} = props
+    const {title, authors, imageLinks, shelf} = props.book
 
     return <div className="book">
         <div className="book-top">
-            <div className="book-cover" style={{width: 128, height: 193, backgroundImage: `url(${img})`}}></div>
-            <BookChanger/>
+            <div className="book-cover" style={{width: 128, height: 193, backgroundImage: `url(${imageLinks.thumbnail})`}}></div>
+            <BookChanger shelf={shelf}/>
         </div>
         <div className="book-title">{title}</div>
         <div className="book-authors">{authors}</div>
@@ -17,9 +17,7 @@ const Book = (props) => {
 }
 
 Book.propTypes = {
-    title: PropTypes.string.isRequired,
-    authors: PropTypes.array.isRequired,
-    img: PropTypes.string.isRequired
+    book: PropTypes.object.isRequired
 }
 
 export default Book;
