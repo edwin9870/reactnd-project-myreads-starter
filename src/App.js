@@ -56,13 +56,10 @@ class BooksApp extends React.Component {
                                 </div>
                                 <ListBookContent books={this.state.books}
                                                  changeBookCategory={this.changeBookCategory}/>
-
                                 <div className="open-search">
-                                    {/*<button onClick={() => console.log("")}>Add a book</button>*/}
                                     <Link to="/search">
                                         <button>Add a book</button>
                                     </Link>
-                                    {/*<Link to="/search">Add a book</Link>*/}
                                 </div>
                             </div>
                         }/>
