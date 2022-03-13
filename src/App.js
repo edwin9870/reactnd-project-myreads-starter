@@ -1,9 +1,8 @@
 import React from 'react'
-// import * as BooksAPI from './BooksAPI'
 import './App.css'
 import ListBookContent from "./ListBookContent";
 import * as BooksAPI from './BooksAPI';
-import {Route, Router, Routes} from "react-router-dom";
+import {Route, Routes, BrowserRouter as Router, Link} from "react-router-dom";
 
 class BooksApp extends React.Component {
     state = {
@@ -48,7 +47,8 @@ class BooksApp extends React.Component {
 
         return (
             <div className="app">
-            <Router >
+                <Router>
+                    <Routes>
                         <Route exact path="/" element={
                             <div className="list-books">
                                 <div className="list-books-title">
@@ -58,9 +58,8 @@ class BooksApp extends React.Component {
                                                  changeBookCategory={this.changeBookCategory}/>
 
                                 <div className="open-search">
-                                    <button onClick={() => console.log("")}>Add a book
-                                    </button>
-
+                                    {/*<button onClick={() => console.log("")}>Add a book</button>*/}
+                                    <Link to="/search"><button>Add a book</button></Link>
                                     {/*<Link to="/search">Add a book</Link>*/}
                                 </div>
                             </div>
@@ -90,7 +89,8 @@ class BooksApp extends React.Component {
                                 </div>
                             </div>
                         }/>
-            </Router>
+                    </Routes>
+                </Router>
             </div>
         )
     }
