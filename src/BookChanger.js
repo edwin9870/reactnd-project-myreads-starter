@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 const BookChanger = (props) => {
 
-    const actualCategory = props.shelf
+    const actualCategory = props.shelf != null ? props.shelf : "none"
+
 
     return <div className="book-shelf-changer">
         <select value={actualCategory} onChange={(e) => props.newValueBookCategory(e.target.value)}>
@@ -18,7 +19,7 @@ const BookChanger = (props) => {
 }
 
 BookChanger.propTypes = {
-    shelf: PropTypes.string.isRequired,
+    shelf: PropTypes.string,
     newValueBookCategory: PropTypes.func.isRequired
 }
 
