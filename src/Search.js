@@ -39,7 +39,7 @@ class Search extends Component {
     changeBookCategory = (bookId, shelf) => {
         const booksPromise = new Promise((resolve => {
             const books = this.state.books.map(e => {
-                if(e.id === bookId) {
+                if (e.id === bookId) {
                     e.shelf = shelf
                 }
 
@@ -50,10 +50,10 @@ class Search extends Component {
 
         booksPromise
             .then(data => {
-            this.setState({
-                books: data
+                this.setState({
+                    books: data
+                })
             })
-        })
             .then(() => this.props.changeBookCategory(bookId, shelf))
 
 
@@ -66,6 +66,10 @@ class Search extends Component {
             .then(data => {
                 const searchResultBooks = data[0]
                 const currentBooks = data[1]
+
+                if(searchResultBooks.error !== undefined)
+                    throw new Error(searchResultBooks.error)
+
                 return searchResultBooks.map(book => {
                     const currentBook = currentBooks.find(e => e.id === book.id)
                     if (currentBook !== undefined) {
@@ -78,7 +82,11 @@ class Search extends Component {
                 this.setState({
                     books: data
                 })
-            }).catch(error => console.error(`Error while trying to get books. Errors: ${error}`))
+            }).catch(error => {
+            console.error(`Error while trying to get books. Errors: ${error}`)
+            this.clearBookList()
+
+        })
     }
 
     render() {
