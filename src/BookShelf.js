@@ -10,7 +10,7 @@ class BookShelf extends Component {
             {title !== undefined && <h2 className="bookshelf-title">{title}</h2>}
             <div className="bookshelf-books">
                 <ol className="books-grid">
-                    {books.map(book => <li key={book.id}>
+                    {books.filter(e => e.imageLinks !== undefined).map(book => <li key={book.id}>
                         <Book book={book} changeBookCategory={this.props.changeBookCategory}/>
                     </li>)}
                 </ol>
